@@ -3,8 +3,8 @@
 from telegram import KeyboardButton, ReplyKeyboardMarkup, ReplyKeyboardRemove, Update
 from telegram.ext import ContextTypes
 
-REPLY_TEST_TEXT = "بالا"
-CLOSE_KEYBOARD_TEXT = "پایین"
+REPLY_TEST_TEXT = "message"
+CLOSE_KEYBOARD_TEXT = "0"
 
 reply_test_keyboard = ReplyKeyboardMarkup(
     [[KeyboardButton(REPLY_TEST_TEXT)], [KeyboardButton(CLOSE_KEYBOARD_TEXT)]],
