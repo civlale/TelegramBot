@@ -19,6 +19,8 @@ keyboard = [
     [profile_button],
     [about_button],
     [contact_button],
+    [InlineKeyboardButton("بالا", callback_data="test_inline")],
+    [InlineKeyboardButton("پایین", callback_data="test_reply")],
 ]
 
 

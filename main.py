@@ -27,7 +27,7 @@ if __name__ == '__main__':
     # app.add_handler(CommandHandler('fuck_you', fuck_command))
 
     # Register message handler
-    app.add_handler(MessageHandler(filters.TEXT, process_message))
+    app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, process_message))
 
     # Register error handler
     app.add_error_handler(log_error)

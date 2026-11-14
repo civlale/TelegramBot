@@ -1,9 +1,13 @@
 from services.responses import generate_response
+from handlers.keyboard_tests import handle_reply_test
 from config import BOT_HANDLE 
 from telegram import Update
 from telegram.ext import ContextTypes
 
 async def process_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    if await handle_reply_test(update, context):
+        return
+
     # Extract details of the incoming message
     chat_type: str = update.message.chat.type
     text: str = update.message.text
@@ -12,7 +16,7 @@ async def process_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     print(f'User ({update.message.chat.id}) in {chat_type}: "{text}"')
 
     # Handle group messages only if bot is mentioned
-    if chat_type == 'group':
+    if chat_type in ('group', 'supergroup'):
         if BOT_HANDLE in text:
             cleaned_text: str = text.replace(BOT_HANDLE, '').strip()
             response: str = generate_response(cleaned_text)
